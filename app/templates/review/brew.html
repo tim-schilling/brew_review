@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a class="pull-left" href="{{ url_for(".index") }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a>
+  <div class="clearfix"></div>
+  <div class="jumbotron">
+    <h1>{{ brew.name }}</h1>
+    <h4>Brewer by {{ brew.brewer }}</h4>
+    <dl class="dl-horizontal">
+      <dt>Style</dt>
+      <dd>{{ brew.style }} {{ brew.style_name }}</dd>
+      {% if brew.og %}
+        <dt>OG</dt>
+        <dd>{{ brew.og }}</dd>
+      {% endif %}
+      {% if brew.fg %}
+        <dt>FG</dt>
+        <dd>{{ brew.fg }}</dd>
+      {% endif %}
+      {% if brew.brewed %}
+        <dt>Brewed</dt>
+        <dd>{{ brew.brewed }}</dd>
+      {% endif %}
+      {% if brew.bottled %}
+        <dt>Bottled</dt>
+        <dd>{{ brew.bottled }}</dd>
+      {% endif %}
+      {% if brew.fermentables %}
+        <dt>Fermentables</dt>
+        <dd>{{ brew.fermentables|linebreaks }}</dd>
+      {% endif %}
+      {% if brew.mash_schedule %}
+        <dt>Mash Schedule</dt>
+        <dd>{{ brew.mash_schedule|linebreaks }}</dd>
+      {% endif %}
+      {% if brew.hops %}
+        <dt>Hops</dt>
+        <dd>{{ brew.hops|linebreaks }}</dd>
+      {% endif %}
+      {% if brew.yeast %}
+        <dt>Yeast</dt>
+        <dd>{{ brew.yeast }}</dd>
+      {% endif %}
+      {% if brew.comments %}
+        <dt>Extra info</dt>
+        <dd>{{ brew.comments|linebreaks }}</dd>
+      {% endif %}
+    </dl>
+    <p><a class="btn btn-lg btn-success" href="{{ url_for('.review_brew', brew_slug=brew.slug) }}" role="button">Review Brew</a></p>
+  </div>
+
+  {% for review in reviews %}
+  <div class="row marketing">
+      <div class="col-xs-12">
+        {% include "review/includes/review.html" %}
+      </div>
+  </div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,1 @@
+Simple application to create homebrew recipes and solicit feedback from folks.

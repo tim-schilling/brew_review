@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from 'form_widgets.html' import render_field %}
+
+{% block content %}
+  <a class="pull-left" href="{{ url_for(".index") }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back</a>
+  <div class="row marketing">
+    <div class="col-xs-12">
+      <h4>Create Brew</h4>
+
+      {% if form.errors %}
+        <div>
+          {% for field, error in form.errors.items() %}
+            {% for e in error %}
+              {{ e }}<br>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      <form method="POST" action="" accept-charset="UTF-8" role="form">
+        {{ form.csrf_token }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.brewer) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.style) }}
+        {{ render_field(form.brewed, placeholder="mm-dd-yyyy") }}
+        {{ render_field(form.bottled, placeholder="mm-dd-yyyy") }}
+        {{ render_field(form.og) }}
+        {{ render_field(form.fg) }}
+        {{ render_field(form.fermentables) }}
+        {{ render_field(form.mash_schedule) }}
+        {{ render_field(form.hops) }}
+        {{ render_field(form.yeast) }}
+        {{ render_field(form.comments) }}
+        <button type="submit" class="btn btn-default">Save</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

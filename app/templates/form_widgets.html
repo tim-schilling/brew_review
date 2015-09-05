@@ -1,0 +1,13 @@
+{% macro render_field(field, placeholder='') %}
+  {% if field.errors %}
+    <div class="form-group has-error">
+  {% elif field.flags.error %}
+    <div class="form-group has-error">
+  {% else %}
+    <div class="form-group ">
+  {% endif %}
+<label for="{{ field.label.field_id }}" class="control-label">{{ field.label.text }}</label>
+{% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+{{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}

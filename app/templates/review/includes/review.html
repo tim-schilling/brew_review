@@ -1,0 +1,25 @@
+<div>
+  <h3>Reviewed by {% if review.name %}{{ review.name}}{% else %}It's a mystery!{% endif %}</h3>
+  <dl>
+    <dt>Aroma - {{ review.aroma_score }}/{{ review.MAX_SCORES['aroma_score'] }}</dt>
+    <dd></dd>
+    {% if review.aroma_comments %}
+      <dd>{{ review.aroma_comments|linebreaks }}</dd>
+    {% endif %}
+
+    <dt>Appearance - {{ review.appearance_score }}/{{ review.MAX_SCORES['appearance_score'] }}</dt>
+      <dd>{{ review.appearance_comments|linebreaks }}</dd>
+
+    <dt>Flavor - {{ review.flavor_score }}/{{ review.MAX_SCORES['flavor_score'] }}</dt>
+      <dd>{{ review.flavor_comments|linebreaks }}</dd>
+
+    <dt>Mouthfeel - {{ review.mouthfeel_score }}/{{ review.MAX_SCORES['mouthfeel_score'] }}</dt>
+      <dd>{{ review.mouthfeel_comments|linebreaks }}</dd>
+
+    <dt>Overall Impression - {{ review.impression_score }}/{{ review.MAX_SCORES['impression_score'] }}</dt>
+      <dd>{{ review.impression_comments|linebreaks }}</dd>
+
+    <dt style="font-size: 1.3em;">Total</dt>
+    <dd style="font-size: 1.3em;"><strong>{{ review.total_score }}/{{ review.MAX_SCORES['total'] }}</strong></dd>
+  </dl>
+</div>
