@@ -9,10 +9,12 @@
   <div class="row marketing">
   {% for brew in brews %}
       {% if loop.index % 3 == 0 %}</div><div class="row marketing">{% endif %}
-      <div class="col-xs-4" style="border: 1px solid black; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;">
-        <h2>{{ brew.name }}</h2>
-        <a class="pull-right" href="{{ url_for(".view_brew", brew_slug=brew.slug) }}">View<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-        <p>Brewed by {{ brew.brewer }}.</p>
+      <div class="col-xs-4">
+        <div style="padding-left:4px; padding-right:4px; border: 1px solid black; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;">
+          <h2>{{ brew.name }}</h2>
+          <a class="pull-right" href="{{ url_for(".view_brew", brew_slug=brew.slug) }}">View<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+          <p>Brewed by {{ brew.brewer }}.</p>
+        </div>
       </div>
   {% endfor %}
   </div>
